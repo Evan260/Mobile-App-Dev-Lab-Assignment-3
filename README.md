@@ -1,50 +1,69 @@
-# Welcome to your Expo app 👋
+# React Native Todo App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple Todo application built with React Native that allows users to manage their tasks.
 
-## Get started
+## Features
 
-1. Install dependencies
+- Display a list of predefined tasks
+- Add new tasks through a form interface
+- Clean and intuitive user interface
+- Safe area handling for different device sizes
 
-   ```bash
-   npm install
-   ```
+## Project Structure
 
-2. Start the app
+The application consists of three main components:
 
-   ```bash
-    npx expo start
-   ```
+- `index.jsx`: Main application component that manages state and component composition
+- `ToDoList.jsx`: Displays the list of tasks
+- `ToDoForm.jsx`: Handles the addition of new tasks
 
-In the output, you'll find options to open the app in a
+## Implementation Details
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### State Management
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- Uses React's useState hook for managing the task list
+- Tasks are stored as an array in the application's state
+- Each task contains text and completion status
 
-## Get a fresh project
+### Components
 
-When you're ready, run:
+#### App Component (index.jsx)
+
+- Serves as the main container component
+- Manages the task list state
+- Handles the addition of new tasks
+- Composes the ToDoList and ToDoForm components
+
+#### ToDoList Component
+
+- Receives tasks as props
+- Renders tasks in a scrollable list
+- Each task is displayed with appropriate styling
+
+#### ToDoForm Component
+
+- Provides input field for new tasks
+- Handles task submission
+- Clears input after task addition
+
+## Setup and Installation
+
+1. Clone the repository
+2. Install dependencies:
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+3. Run the application:
 
-## Learn more
+```bash
+npm start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Technologies Used
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- React Native
+- React Hooks (useState)
+- JavaScript/JSX
+- React Native StyleSheet for styling
