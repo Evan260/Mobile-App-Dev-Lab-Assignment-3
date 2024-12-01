@@ -4,21 +4,40 @@ import ToDoList from './components/ToDoList';
 import ToDoForm from './components/ToDoForm';
 
 function App() {
-
-  // Add hard-coded tasks
   const [tasks, setTasks] = useState([
     { text: 'Do laundry', completed: false },
     { text: 'Go to gym', completed: false },
     { text: 'Walk dog', completed: false }
   ]);
 
-  const addTask = (newTask) => {
-    setTasks([...tasks, { text: newTask, completed: false }]);
+  const addTask = (taskText) => {
+    // Check for duplicate and log result
+    const isDuplicate = tasks.some(task => {
+      const isMatch = task.text.toLowerCase() === taskText.toLowerCase();
+      return isMatch;
+    });
+
+    if (isDuplicate) {
+      window.alert('This task already exists');
+      return;
+    }
+    
+    setTasks([...tasks, { text: taskText, completed: false }]);
+  };
+
+  const toggleTask = (index) => {
+    const newTasks = tasks.map((task, i) => {
+      if (i === index) {
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+    setTasks(newTasks);
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <ToDoList tasks={tasks} />
+      <ToDoList tasks={tasks} onToggleTask={toggleTask} />
       <ToDoForm onAddTask={addTask} />
     </SafeAreaView>
   );
@@ -27,8 +46,8 @@ function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     padding: 20,
+    backgroundColor: '#f5f5f5',
   },
 });
 
